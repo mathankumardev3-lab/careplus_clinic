@@ -1,0 +1,121 @@
+below (Custom design tokens,
+                           animations, glassmorphism, accordion transitions)
+      - js/script.js    -> Embedded in <script> at bottom (Doctor/Service sync,
+                           Appointment validation, Live clinic open/closed clock,
+                           Interactive vector map, FAQ accordion, WhatsApp links)
+      - assets/         -> Custom inline brand SVGs & curated medical imagery
+ ======================================================================== -->
+
+ <style>
+   /* ======================================================================
+      css/style.css - Custom Design System & Micro-interactions
+   ====================================================================== */
+   :root {
+     --color-white: #FFFFFF;
+     --color-sky: #EAF5FF;
+     --color-blue: #2996D6;
+     --color-teal: #18A999;
+     --color-text: #253347;
+   }
+
+   body {
+     font-family: 'Inter', sans-serif;
+     color: var(--color-text);
+     background-color: var(--color-white);
+     overflow-x: hidden;
+     -webkit-font-smoothing: antialiased;
+   }
+
+   h1, h2, h3, h4, h5, h6, .font-heading {
+     font-family: 'Plus Jakarta Sans', sans-serif;
+   }
+
+   /* Subtle Hero & Section Gradients */
+   .hero-gradient {
+     background: linear-gradient(135deg, #EAF5FF 0%, #F5FAFF 55%, #E6F8F6 100%);
+   }
+
+   .cta-banner-gradient {
+     background: linear-gradient(110deg, #2996D6 0%, #1F8AC7 50%, #18A999 100%);
+   }
+
+   .glass-card {
+     background: rgba(255, 255, 255, 0.92);
+     backdrop-filter: blur(12px);
+     -webkit-backdrop-filter: blur(12px);
+     border: 1px solid rgba(41, 150, 214, 0.14);
+   }
+
+   /* Custom Scrollbar */
+   ::-webkit-scrollbar {
+     width: 10px;
+   }
+   ::-webkit-scrollbar-track {
+     background: #F4F8FC;
+   }
+   ::-webkit-scrollbar-thumb {
+     background: #B8D8F0;
+     border-radius: 9999px;
+   }
+   ::-webkit-scrollbar-thumb:hover {
+     background: #2996D6;
+   }
+
+   /* FAQ Smooth Accordion */
+   .faq-answer {
+     display: grid;
+     grid-template-rows: 0fr;
+     transition: grid-template-rows 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+   }
+   .faq-item.active .faq-answer {
+     grid-template-rows: 1fr;
+   }
+   .faq-answer-inner {
+     overflow: hidden;
+   }
+   .faq-chevron {
+     transition: transform 0.3s ease;
+   }
+   .faq-item.active .faq-chevron {
+     transform: rotate(180deg);
+   }
+
+   /* Floating Pulse Animation */
+   @keyframes softPulse {
+     0%, 100% { transform: scale(1); opacity: 1; }
+     50% { transform: scale(1.06); opacity: 0.9; }
+   }
+   .animate-soft-pulse {
+     animation: softPulse 3s infinite ease-in-out;
+   }
+
+   /* Interactive Map Pin Ripple */
+   @keyframes mapRipple {
+     0% { transform: scale(0.8); opacity: 0.85; }
+     100% { transform: scale(2.4); opacity: 0; }
+   }
+   .map-pin-ripple {
+     animation: mapRipple 2.2s infinite ease-out;
+   }
+
+   /* Form Focus & Error States */
+   .input-field {
+     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+   }
+   .input-field:focus {
+     outline: none;
+     border-color: #2996D6;
+     box-shadow: 0 0 0 4px rgba(41, 150, 214, 0.14);
+   }
+   .input-error {
+     border-color: #E11D48 !important;
+     box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.12) !important;
+   }
+
+   /* Time Slot Pill Active State */
+   .time-slot-btn.selected {
+     background-color: #2996D6;
+     color: #FFFFFF;
+     border-color: #2996D6;
+     box-shadow: 0 6px 16px -4px rgba(41, 150, 214, 0.45);
+   }
